@@ -1,3 +1,4 @@
+(def clojure-target-version (or (System/getenv "CLOJURE_VERSION") "1.10.3"))
 (defproject simple "0.1.0-SNAPSHOT"
 
   :managed-dependencies
@@ -16,7 +17,7 @@
    [io.netty/netty-buffer "4.1.39.Final"]]
 
 
-  :dependencies [[org.clojure/clojure "1.10.2-alpha1"]
+  :dependencies [[org.clojure/clojure ~clojure-target-version]
                  [aleph "0.4.7-alpha5"]]
   :main simple.main
   :uberjar-name "simple-main.jar"

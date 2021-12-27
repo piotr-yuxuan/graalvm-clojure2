@@ -1,0 +1,64 @@
+# Beware: a job matrix can generate a maximum of 256 jobs per workflow
+# run. This limit also applies to self-hosted runners.
+#
+#  – Documentation: https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions#jobsjob_idstrategymatrix
+name: secure-random
+'on':
+  push:
+    branches: [ '*' ]
+    paths:
+      - secure-random/**
+defaults:
+  run:
+    shell: bash
+    working-directory: .github
+jobs:
+  build-native:
+    name: secure-random
+    continue-on-error: true
+    strategy:
+      fail-fast: false
+      matrix:
+        clojure: [
+            1.9.0,
+            1.10.3,
+            1.11.0-alpha3
+        ]
+        leiningen: [
+            latest
+        ]
+        java: [
+            8,
+            11,
+            16,
+        ]
+        graalvm: [
+            19.3.2,
+            20.3.2,
+            21.2.0,
+        ]
+        os: [
+            ubuntu-latest,
+            macOS-latest,
+            windows-latest
+        ]
+    runs-on: ${{ matrix.os }}
+    env:
+      CLOJURE_VERSION: ${{ matrix.clojure }}
+    steps:
+      - uses: actions/checkout@main
+      - uses: ayltai/setup-graalvm@v1
+        with:
+          java-version: ${{ matrix.java }}
+          graalvm-version: ${{ matrix.graalvm }}
+          native-image: true
+      - uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-nvd-${{ hashFiles('**/project.clj') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-nvd-
+      - uses: DeLaGuardo/setup-clojure@master
+        with:
+          lein: ${{ matrix.leiningen }}
+      - run: sh ./build.sh secure-random

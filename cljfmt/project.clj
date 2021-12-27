@@ -1,6 +1,7 @@
+(def clojure-target-version (or (System/getenv "CLOJURE_VERSION") "1.10.3"))
 (defproject sample-project "0.1.0-SNAPSHOT"
 
-  :dependencies [[org.clojure/clojure "1.10.3"]
+  :dependencies [[org.clojure/clojure ~clojure-target-version]
                  [cljfmt "0.7.0"]]
 
   :main simple.main

@@ -1,6 +1,7 @@
+(def clojure-target-version (or (System/getenv "CLOJURE_VERSION") "1.10.3"))
 (defproject fire "0.1.0-SNAPSHOT"
 
-  :dependencies [[org.clojure/clojure "1.10.2-alpha1"]
+  :dependencies [[org.clojure/clojure ~clojure-target-version]
                  [alekcz/fire "0.3.0"]]
 
   :main simple.main

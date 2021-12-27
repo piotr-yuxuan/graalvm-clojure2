@@ -1,6 +1,7 @@
+(def clojure-target-version (or (System/getenv "CLOJURE_VERSION") "1.10.3"))
 (defproject hiccup "0.1.0-SNAPSHOT"
 
-  :dependencies [[org.clojure/clojure "1.10.1"]
+  :dependencies [[org.clojure/clojure ~clojure-target-version]
                  [hiccup "1.0.5"]
                  ]
 

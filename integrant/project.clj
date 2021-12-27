@@ -1,5 +1,6 @@
+(def clojure-target-version (or (System/getenv "CLOJURE_VERSION") "1.10.3"))
 (defproject integrant "0.1.0-SNAPSHOT"
-  :dependencies [[org.clojure/clojure "1.10.3"]
+  :dependencies [[org.clojure/clojure ~clojure-target-version]
                  [integrant "0.8.0"]]
   :main simple.core
   :profiles {:uberjar {:aot :all}

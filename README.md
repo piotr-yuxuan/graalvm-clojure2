@@ -72,8 +72,9 @@ If you wish to add a library and contribute with a PR please follow these steps:
   2. use the `sample-project` as a template. `cp -r sample-project my-library`
   3. add the library to the `project.clj` and the **native-image** parameters used
   4. amend the `my-library/src/simple/main.clj` to use the library
-  5. amend the `my-library/README.md` with the info you discovered.
-  6. Make a PR with your findings and "Thank you" in advance.
+  5. amend the `my-library/README.md` with the info you discovered
+  6. add the project to the `.github/workflows/matrix-build.yml`
+  7. Make a PR with your findings and "Thank you" in advance.
 
 ## License
 

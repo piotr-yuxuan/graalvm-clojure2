@@ -1,6 +1,7 @@
+(def clojure-target-version (or (System/getenv "CLOJURE_VERSION") "1.10.3"))
 (defproject http-kit "0.1.0-SNAPSHOT"
 
-  :dependencies [[org.clojure/clojure "1.5.1"]
+  :dependencies [[org.clojure/clojure ~clojure-target-version]
                  [http-kit "2.5.2"]]
 
   :main simple.main

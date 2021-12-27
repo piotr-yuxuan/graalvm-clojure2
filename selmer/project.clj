@@ -1,6 +1,7 @@
+(def clojure-target-version (or (System/getenv "CLOJURE_VERSION") "1.10.3"))
 (defproject selmer "0.1.0-SNAPSHOT"
 
-  :dependencies [[org.clojure/clojure "1.10.1"]
+  :dependencies [[org.clojure/clojure ~clojure-target-version]
                  [selmer "1.12.18"]]
 
   :main simple.main

@@ -1,6 +1,7 @@
+(def clojure-target-version (or (System/getenv "CLOJURE_VERSION") "1.10.3"))
 (defproject timbre "0.1.0-SNAPSHOT"
 
-  :dependencies [[org.clojure/clojure "1.10.3"]
+  :dependencies [[org.clojure/clojure ~clojure-target-version]
                  [com.taoensso/timbre "5.1.2"]]
 
   :main simple.main

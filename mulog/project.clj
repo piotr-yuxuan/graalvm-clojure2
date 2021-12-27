@@ -1,6 +1,7 @@
+(def clojure-target-version (or (System/getenv "CLOJURE_VERSION") "1.10.3"))
 (defproject sample-project "0.1.0"
 
-  :dependencies [[org.clojure/clojure "1.10.3"]
+  :dependencies [[org.clojure/clojure ~clojure-target-version]
                  [com.brunobonacci/mulog "0.7.0-SNAPSHOT"]
                  ;; add the library here
                  ]

@@ -1,6 +1,7 @@
+(def clojure-target-version (or (System/getenv "CLOJURE_VERSION") "1.10.3"))
 (defproject safely "0.1.0-SNAPSHOT"
 
-  :dependencies [[org.clojure/clojure "1.10.0"]
+  :dependencies [[org.clojure/clojure ~clojure-target-version]
                  [com.brunobonacci/safely "0.5.0-alpha6"]
                  ;; to use with Log4J
                  [org.slf4j/slf4j-log4j12 "1.7.25"]

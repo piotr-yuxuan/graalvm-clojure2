@@ -1,6 +1,7 @@
+(def clojure-target-version (or (System/getenv "CLOJURE_VERSION") "1.10.3"))
 (defproject aws-api-s3 "0.1.0-SNAPSHOT"
 
-  :dependencies [[org.clojure/clojure         "1.10.2-rc1"]
+  :dependencies [[org.clojure/clojure         ~clojure-target-version]
                  [com.cognitect.aws/api       "0.8.484"]
                  [com.cognitect.aws/endpoints "1.1.11.926"]
                  [com.cognitect.aws/s3        "810.2.817.0"]]

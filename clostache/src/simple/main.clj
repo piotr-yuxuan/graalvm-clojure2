@@ -1,5 +1,6 @@
 (ns simple.main
-  (:require [clostache.parser :as clo])
+  (:require [clostache.parser :as clo]
+            [clojure.string :as str])
   (:gen-class))
 
 (def example-1 
@@ -53,3 +54,50 @@
                                                               (fn [render-fn] 
                                                                 (clojure.string/upper-case (render-fn text))))})))
 
+(def projects
+  ["aws-api-s3"
+   "datascript"
+   "clj-sophia"
+   "cli4clj"
+   "amazonica-s3"
+   "clojure"
+   "clostache"
+   "clj-http-lite"
+   "carmine"
+   "cljfmt"
+   "clara-rules"
+   "next-jdbc"
+   "tools-logging-log4j"
+   "spec"
+   "component"
+   "mulog"
+   "integrant"
+   "lacinia"
+   "tools-logging"
+   "ring-jetty"
+   "sample-project"
+   "system"
+   "cprop"
+   "nippy"
+   "fire"
+   "timbre"
+   "http-kit"
+   "aleph"
+   "safely"
+   "monger"
+   "secure-random"
+   "cheshire"
+   "fastmath"
+   "selmer"
+   "hiccup"
+   "asami"
+   "loom"
+   "clj-uuid"])
+
+(doseq [project-name projects]
+  (let [parent-directory "/Users/p2b/src/github.com/piotr-yuxuan/graalvm-clojure"]
+    (spit (format "%s/.github/workflows/%s.yml" parent-directory project-name)
+      (str/replace
+            (slurp (format "%s/.github/workflow-template.yml" parent-directory))
+            "{{PROJECT_NAME}}"
+            project-name))))
